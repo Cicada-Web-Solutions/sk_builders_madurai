@@ -237,20 +237,21 @@ const whatsappNumber = "918144414434";
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 const brandLogos = {
-  "maha": "assets/brands/maha-cement.jpeg",
+  "maha": "assets/brands/maha-cement.png",
   "dalmia": "assets/brands/dalmia-cement.png",
-  "ultratech": "assets/brands/ultratech-cement.jpg",
+  "ultratech": "assets/brands/ultratech-cement.png",
   "dsrm": "assets/brands/dsrm-steel.png",
-  "aishwaryam": "assets/brands/aishwaryam-tmt.jpg",
-  "jsw": "assets/brands/jsw-steel.webp",
-  "dr-fixit": "assets/brands/dr-fixit.jpg",
-  "fosroc": "assets/brands/fosroc.jpg",
+  "aishwaryam": "assets/brands/aishwaryam-tmt.png",
+  "jsw": "assets/brands/jsw-steel.png",
+  "dr-fixit": "assets/brands/dr-fixit.png",
+  "fosroc": "assets/brands/fosroc.png",
   "parryware": "assets/brands/parryware.png",
   "jaquar": "assets/brands/jaguar.png",
-  "asian-paints": "assets/brands/asian-paints.jpg",
-  "kundan": "assets/brands/kundan-cables.avif",
+  "jaguar": "assets/brands/jaguar.png",
+  "asian-paints": "assets/brands/asian-paints.png",
+  "kundan": "assets/brands/kundan-cables.png",
   "finolex-cables": "assets/brands/finolex-cables.png",
-  "hifi": "assets/brands/hifi-electric.jpg",
+  "hifi": "assets/brands/hifi-electric.png",
   "legrand": "assets/brands/legrand.png",
   "supreme": "assets/brands/supreme.png",
   "ashirvad": "assets/brands/ashirvad.png",
@@ -309,8 +310,15 @@ const setupBrandLogos = () => {
     const key = brand.dataset.brand;
     const src = brandLogos[key];
     const name = brand.textContent.trim();
+
     brand.dataset.logoReady = "true";
+    brand.setAttribute("aria-label", name);
+    brand.setAttribute("title", name);
+
     if (!src) return;
+
+    brand.classList.add("has-logo");
+    brand.textContent = "";
 
     const chip = document.createElement("span");
     chip.className = "brand-logo-chip";
@@ -318,12 +326,20 @@ const setupBrandLogos = () => {
     const img = document.createElement("img");
     img.src = src;
     img.alt = `${name} logo`;
-    img.loading = "lazy";
+    img.loading = "eager";
     img.decoding = "async";
-    img.addEventListener("error", () => chip.remove(), { once: true });
+    img.dataset.fallbackReady = "true";
+
+    img.addEventListener("error", () => {
+      chip.remove();
+      brand.classList.remove("has-logo");
+      brand.textContent = name;
+      brand.setAttribute("aria-label", name);
+      brand.setAttribute("title", name);
+    }, { once: true });
 
     chip.append(img);
-    brand.prepend(chip);
+    brand.append(chip);
   });
 };
 
