@@ -924,6 +924,18 @@
 
 @media (max-width: 768px) {
   .hero-copy,
+  .about-copy,
+  .gem-project-content,
+  .contact-copy,
+  .section-heading {
+    text-align: center;
+  }
+
+  .hero {
+    padding-bottom: 84px;
+  }
+
+  .hero-copy,
   .hero-media,
   .hero-title,
   .page-hero-grid {
@@ -951,6 +963,84 @@
 
   .hero-actions .btn {
     width: 100%;
+  }
+
+  #about .about-bullet-list li {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 10px;
+    min-height: 96px;
+    padding: 18px;
+    text-align: center;
+  }
+
+  #about .about-bullet-list li > span {
+    position: relative;
+    width: 36px;
+    height: 36px;
+    font-size: 0.72rem;
+  }
+
+  .about-stat-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 280px);
+    justify-content: center;
+    gap: 14px;
+    margin-top: 36px;
+  }
+
+  .about-stat-card {
+    min-height: 118px;
+    padding: 18px 20px;
+    text-align: center;
+  }
+
+  .about-stat-card strong {
+    font-size: clamp(2rem, 10vw, 2.85rem);
+  }
+
+  .about-stat-card span {
+    margin-inline: auto;
+  }
+
+  .gem-project-section {
+    padding-block: 78px;
+  }
+
+  .gem-project-wrap {
+    display: grid;
+    gap: 30px;
+  }
+
+  .gem-project-content::before {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .gem-project-section .gem-title,
+  .gem-project-section .section-title.gem-title {
+    max-width: min(100%, 360px);
+    font-size: clamp(2.8rem, 13vw, 4.3rem);
+    line-height: 0.98;
+    text-align: center;
+  }
+
+  .gem-project-section .gem-line {
+    text-align: center;
+  }
+
+  .gem-project-section .gem-gold {
+    justify-content: center;
+    white-space: normal;
+  }
+
+  .gem-project-section .section-intro {
+    margin-top: 20px;
+  }
+
+  .gem-video-card {
+    max-width: min(100%, 430px);
+    margin-inline: auto;
   }
 
   .hero-badges {
@@ -988,7 +1078,6 @@
 
   .why-list,
   .quick-grid,
-  .process-timeline,
   .contact-form {
     grid-template-columns: 1fr;
   }
@@ -997,31 +1086,61 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .process-section .section-heading {
+    margin-bottom: 34px;
+  }
+
+  .process-section .section-title {
+    max-width: 340px;
+    font-size: clamp(2.25rem, 10vw, 3.15rem);
+    line-height: 1.04;
+  }
+
+  .process-timeline {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+    max-width: 390px;
+    margin-inline: auto;
+    padding-left: 0;
+  }
+
+  .process-timeline::before {
+    display: none;
+  }
+
   .process-step {
-    padding: 0 0 28px 74px;
+    display: grid;
+    grid-template-columns: 56px minmax(0, 1fr);
+    gap: 8px 16px;
+    align-items: start;
+    padding: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: var(--radius);
+    background: rgba(255, 255, 255, 0.045);
+    text-align: left;
   }
 
   .process-step:not(:last-child)::before {
-    content: "";
-    position: absolute;
-    top: 52px;
-    bottom: 0;
-    left: 26px;
-    width: 1px;
-    background: var(--line-dark);
+    display: none;
   }
 
   .process-step span {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 54px;
-    height: 54px;
+    position: relative;
+    grid-row: span 2;
+    width: 56px;
+    height: 56px;
     font-size: 1rem;
   }
 
   .process-step h3 {
     margin-top: 0;
+    align-self: end;
+    font-size: 1.08rem;
+  }
+
+  .process-step p {
+    grid-column: 2;
   }
 }
 
@@ -1076,5 +1195,19 @@
 
   .stat-grid {
     grid-template-columns: 1fr;
+  }
+
+  .about-stat-grid {
+    grid-template-columns: minmax(0, 252px);
+  }
+
+  .gem-project-section .gem-title,
+  .gem-project-section .section-title.gem-title {
+    max-width: 330px;
+    font-size: clamp(2.7rem, 15vw, 3.95rem);
+  }
+
+  .process-timeline {
+    max-width: 100%;
   }
 }

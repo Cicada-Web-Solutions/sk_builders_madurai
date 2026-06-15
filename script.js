@@ -922,6 +922,49 @@ const setupBackToTop = () => {
   });
 };
 
+
+const setupQuoteForm = () => {
+  const form = document.querySelector("#quoteForm");
+  if (!form) return;
+
+  const whatsappNumber = "918144414434";
+
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const formData = new FormData(form);
+
+    const name = formData.get("name")?.trim();
+    const phone = formData.get("phone")?.trim();
+    const projectType = formData.get("projectType")?.trim();
+    const sqft = formData.get("sqft")?.trim();
+    const location = formData.get("location")?.trim();
+    const message = formData.get("message")?.trim();
+
+    if (!name || !phone || !projectType) {
+      alert("Please fill Name, Phone and Project Type.");
+      return;
+    }
+
+    const whatsappMessage = `
+New Enquiry from SK Builders Website
+
+Name: ${name}
+Phone: ${phone}
+Project Type: ${projectType}
+Approx. Sq.ft: ${sqft || "-"}
+Location: ${location || "-"}
+Message: ${message || "-"}
+    `.trim();
+
+    const encodedMessage = encodeURIComponent(whatsappMessage);
+    const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+
+    window.open(whatsappURL, "_blank");
+  });
+};
+
+
 document.addEventListener("DOMContentLoaded", () => {
   document.body.classList.add("loaded");
   $("#year").textContent = new Date().getFullYear();
@@ -937,6 +980,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setupBackToTop();
   setupGsap();
   setHeaderState();
+  setupQuoteForm();
 });
 
 window.addEventListener("scroll", setHeaderState, { passive: true });

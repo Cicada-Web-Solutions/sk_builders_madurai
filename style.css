@@ -390,30 +390,43 @@ button {
 
 .menu-toggle span {
   position: absolute;
-  left: 13px;
-  width: 20px;
+  left: 50%;
+  width: 22px;
   height: 2px;
   background: var(--ink);
   transition: transform 0.25s var(--ease),
-    top 0.25s var(--ease);
+    top 0.25s var(--ease),
+    opacity 0.2s var(--ease);
 }
 
-.menu-toggle span:first-child {
-  top: 18px;
+.menu-toggle span:nth-child(1) {
+  top: 15px;
+  transform: translateX(-50%);
 }
 
-.menu-toggle span:last-child {
-  top: 28px;
-}
-
-.menu-toggle[aria-expanded="true"] span:first-child {
+.menu-toggle span:nth-child(2) {
   top: 23px;
-  transform: rotate(45deg);
+  transform: translateX(-50%);
 }
 
-.menu-toggle[aria-expanded="true"] span:last-child {
+.menu-toggle span:nth-child(3) {
+  top: 31px;
+  transform: translateX(-50%);
+}
+
+.menu-toggle[aria-expanded="true"] span:nth-child(1) {
   top: 23px;
-  transform: rotate(-45deg);
+  transform: translateX(-50%) rotate(45deg);
+}
+
+.menu-toggle[aria-expanded="true"] span:nth-child(2) {
+  opacity: 0;
+  transform: translateX(-50%) scaleX(0.35);
+}
+
+.menu-toggle[aria-expanded="true"] span:nth-child(3) {
+  top: 23px;
+  transform: translateX(-50%) rotate(-45deg);
 }
 
 .mobile-menu nav {
@@ -3119,9 +3132,24 @@ body.packages-page .packages-hero .btn-secondary:focus-visible {
   display: none;
   width: 48px;
   height: 48px;
-  border: 1px solid rgba(24, 24, 24, 0.28);
-  border-radius: 4px;
-  background: rgba(255, 255, 255, 0.18);
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  outline: none;
+  padding: 0;
+  appearance: none;
+  -webkit-appearance: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.menu-toggle:focus {
+  outline: none;
+}
+
+.menu-toggle:focus-visible {
+  outline: 2px solid rgba(24, 24, 24, 0.72);
+  outline-offset: 4px;
 }
 
 .mobile-menu {
@@ -4383,5 +4411,243 @@ body.packages-page .package-badge {
 
   .about-stat-card {
     aspect-ratio: auto;
+  }
+}
+
+/* ================================
+   Mobile Optimization Pass
+================================ */
+
+@media (max-width: 992px) {
+  .header-inner {
+    min-height: var(--header-height);
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .desktop-nav,
+  .desktop-cta,
+  .mobile-menu > .btn {
+    display: none !important;
+  }
+
+  .cursor-dot {
+    display: none !important;
+  }
+
+  .brand {
+    min-width: 0;
+  }
+
+  .brand img {
+    height: 58px !important;
+  }
+
+  .menu-toggle {
+    position: fixed;
+    top: 18px;
+    right: 16px;
+    display: block;
+    margin-left: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero,
+  .about-section,
+  .gem-project-section,
+  .process-section,
+  .contact-section {
+    text-align: center;
+  }
+
+  .hero-copy,
+  .about-copy,
+  .gem-project-content,
+  .contact-copy,
+  .section-heading {
+    text-align: center;
+  }
+
+  .hero-title,
+  .hero-text,
+  .section-title,
+  .section-intro,
+  .body-copy,
+  .hero-actions {
+    margin-inline: auto;
+  }
+
+  .hero-actions {
+    gap: 12px;
+    margin-top: 30px;
+  }
+
+  #about .about-bullet-list li {
+    grid-template-columns: 1fr !important;
+    justify-items: center;
+    gap: 10px;
+    min-height: 96px;
+    padding: 18px !important;
+    text-align: center;
+  }
+
+  #about .about-bullet-list li > span {
+    position: relative !important;
+    width: 36px !important;
+    height: 36px !important;
+    font-size: 0.72rem !important;
+  }
+
+  #about .about-stat-grid,
+  .about-stat-grid {
+    grid-template-columns: minmax(0, 280px) !important;
+    justify-content: center;
+    gap: 14px !important;
+    margin-top: 36px !important;
+  }
+
+  #about .about-stat-card,
+  .about-stat-card {
+    aspect-ratio: auto;
+    min-height: 118px !important;
+    padding: 18px 20px !important;
+    text-align: center;
+  }
+
+  #about .about-stat-card strong,
+  .about-stat-card strong {
+    font-size: clamp(2rem, 10vw, 2.85rem);
+  }
+
+  #about .about-stat-card span,
+  .about-stat-card span {
+    margin-inline: auto;
+  }
+
+  .gem-project-section {
+    padding-block: 78px;
+  }
+
+  .gem-project-wrap {
+    display: grid;
+    gap: 30px;
+  }
+
+  .gem-project-content::before {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .gem-project-section .gem-title,
+  .gem-project-section .section-title.gem-title {
+    max-width: min(100%, 360px) !important;
+    margin-inline: auto;
+    font-size: clamp(2.8rem, 13vw, 4.3rem) !important;
+    line-height: 0.98 !important;
+    text-align: center;
+  }
+
+  .gem-project-section .gem-line {
+    text-align: center;
+  }
+
+  .gem-project-section .gem-gold {
+    justify-content: center;
+    white-space: normal !important;
+  }
+
+  .gem-project-section .section-intro {
+    margin-top: 20px;
+  }
+
+  .gem-video-card {
+    max-width: min(100%, 430px);
+    margin-inline: auto;
+  }
+
+  .process-section .section-heading {
+    margin-bottom: 34px;
+  }
+
+  .process-section .section-title {
+    max-width: 340px !important;
+    font-size: clamp(2.25rem, 10vw, 3.15rem) !important;
+    line-height: 1.04 !important;
+  }
+
+  .process-timeline {
+    display: grid;
+    grid-template-columns: 1fr !important;
+    gap: 18px !important;
+    max-width: 390px;
+    margin-inline: auto;
+    padding-left: 0;
+  }
+
+  .process-timeline::before {
+    display: none !important;
+  }
+
+  .process-step {
+    display: grid;
+    grid-template-columns: 56px minmax(0, 1fr);
+    gap: 8px 16px;
+    align-items: start;
+    padding: 18px !important;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: var(--radius);
+    background: rgba(255, 255, 255, 0.045);
+    text-align: left;
+  }
+
+  .process-step:not(:last-child)::before {
+    display: none !important;
+  }
+
+  .process-step span {
+    position: relative;
+    grid-row: span 2;
+    width: 56px;
+    height: 56px;
+    font-size: 1rem;
+  }
+
+  .process-step h3 {
+    margin-top: 0;
+    align-self: end;
+    font-size: 1.08rem;
+  }
+
+  .process-step p {
+    grid-column: 2;
+  }
+}
+
+@media (max-width: 480px) {
+  .brand img {
+    height: 50px !important;
+  }
+
+  .menu-toggle {
+    top: 13px;
+    right: 12px;
+    width: 44px;
+    height: 44px;
+  }
+
+  #about .about-stat-grid,
+  .about-stat-grid {
+    grid-template-columns: minmax(0, 252px) !important;
+  }
+
+  .gem-project-section .gem-title,
+  .gem-project-section .section-title.gem-title {
+    max-width: 330px !important;
+    font-size: clamp(2.7rem, 15vw, 3.95rem) !important;
+  }
+
+  .process-timeline {
+    max-width: 100%;
   }
 }
