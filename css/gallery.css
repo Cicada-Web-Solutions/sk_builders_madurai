@@ -192,6 +192,54 @@
 ================================ */
 
 @media (max-width: 768px) {
+  .gallery-page .page-hero {
+    padding-bottom: 72px;
+    text-align: center;
+  }
+
+  .gallery-page .page-hero .page-hero-grid {
+    align-items: center;
+    gap: 28px;
+  }
+
+  .gallery-page .page-hero .section-label,
+  .gallery-page .page-hero .hero-title,
+  .gallery-page .page-hero .body-copy,
+  .gallery-page .page-hero .body-copy p {
+    margin-inline: auto;
+    text-align: center;
+  }
+
+  .gallery-page .page-hero .hero-actions {
+    max-width: min(100%, 390px);
+    margin-inline: auto;
+    margin-top: 28px;
+    gap: 12px;
+  }
+
+  .gallery-page .page-hero .hero-actions .btn {
+    width: 100%;
+  }
+
+  .gallery-page .gallery-section .section-heading {
+    text-align: center;
+  }
+
+  .gallery-page .gallery-section .section-title,
+  .gallery-page .gallery-section .section-intro {
+    margin-inline: auto;
+  }
+
+  .gallery-controls {
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 34px;
+  }
+
+  .filter-btn {
+    min-width: 128px;
+  }
+
   .gallery-grid {
     columns: 2 220px;
   }
@@ -203,6 +251,15 @@
 }
 
 @media (max-width: 480px) {
+  .gallery-page .page-hero .hero-actions {
+    max-width: 100%;
+  }
+
+  .filter-btn {
+    flex: 1 1 calc(50% - 8px);
+    min-width: 0;
+  }
+
   .gallery-grid {
     columns: auto;
   }

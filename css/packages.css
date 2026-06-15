@@ -681,9 +681,37 @@ body.packages-page .package-badge {
 }
 
 @media (max-width: 768px) {
+  body.packages-page .packages-hero {
+    min-height: auto;
+    padding-top: calc(var(--header-height) + 46px);
+    padding-bottom: 76px;
+    text-align: center;
+  }
+
+  body.packages-page .packages-hero .page-hero-grid {
+    align-items: center;
+    gap: 28px;
+  }
+
+  body.packages-page .packages-hero .section-label,
+  body.packages-page .packages-hero .hero-title,
+  body.packages-page .packages-hero .body-copy,
+  body.packages-page .packages-hero .body-copy p {
+    margin-inline: auto;
+    text-align: center;
+  }
+
   body.packages-page .packages-hero .hero-actions,
   .package-cta-inner .hero-actions {
     max-width: min(100%, 390px);
+    margin-inline: auto;
+    margin-top: 28px;
+    gap: 12px;
+  }
+
+  body.packages-page .packages-hero .hero-actions .btn,
+  .package-cta-inner .hero-actions .btn {
+    width: 100%;
   }
 
   .package-nav {
@@ -697,7 +725,38 @@ body.packages-page .package-badge {
 
   .comparison-section,
   .package-quick-summary {
-    padding-block: 58px;
+    padding-block: 66px;
+  }
+
+  .package-overview .section-heading,
+  .comparison-heading,
+  .package-cta-inner {
+    text-align: center;
+  }
+
+  .package-overview .section-heading .section-title,
+  .comparison-heading .section-title,
+  .comparison-intro {
+    margin-inline: auto;
+  }
+
+  .package-summary-grid {
+    gap: 18px;
+  }
+
+  .package-summary-card {
+    gap: 14px;
+    padding: 24px 20px;
+    text-align: center;
+  }
+
+  .package-highlight-list {
+    text-align: left;
+  }
+
+  .package-card-cta {
+    align-self: stretch;
+    text-align: center;
   }
 
   .comparison-table-wrap {
@@ -728,6 +787,7 @@ body.packages-page .package-badge {
     border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: var(--radius);
     background: #202020;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.16);
   }
 
   .comparison-table tbody tr:nth-child(even):not(.row-group) {
@@ -749,6 +809,7 @@ body.packages-page .package-badge {
     align-items: center;
     padding: 15px 16px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: left;
   }
 
   .comparison-table tbody td::before {
@@ -806,9 +867,10 @@ body.packages-page .package-badge {
   }
 
   .paint-spec-head {
-    align-items: flex-start;
+    align-items: center;
     flex-direction: column;
     gap: 8px;
+    text-align: center;
   }
 
   .paint-package-card {
