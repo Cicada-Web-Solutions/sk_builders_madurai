@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://skbuildersmadurai.in/sitemap.xml
+Sitemap: https://www.skbuildersmadurai.in/sitemap.xml
